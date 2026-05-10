@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: Michael Pham
+Student ID:   132006066
 
 INSTRUCTIONS
 ------------
@@ -18,6 +18,9 @@ Submit this file as: torchbearer.py
 """
 
 import heapq
+from queue import PriorityQueue
+
+from pandas.util.version import Infinity
 
 
 # =============================================================================
@@ -36,21 +39,13 @@ def explain_problem():
 # =============================================================================
 
 def select_sources(spawn, relics, exit_node):
-    """
-    Parameters
-    ----------
-    spawn : node
-    relics : list[node]
-    exit_node : node
 
-    Returns
-    -------
-    list[node]
-        No duplicates. Order does not matter.
+    SourceNodes = [spawn]
+    for RelicNode in relics:
+        if RelicNode not in SourceNodes:
+            list.append(SourceNodes, RelicNode)
 
-    TODO
-    """
-    pass
+    return SourceNodes
 
 
 def run_dijkstra(graph, source):
@@ -69,7 +64,36 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+
+    PQ = PriorityQueue()
+
+    dist_table = {}
+
+    for node in graph:
+        dist_table[node] = Infinity
+
+    dist_table[source] = 0
+    PQ.put((0,source))
+
+    while PQ.qsize() > 0:
+        dequeue = PQ.get()
+        NewDistance = dequeue[0]
+        NewNode = dequeue[1]
+
+
+        if NewDistance > dist_table[NewNode]:
+            continue
+
+        for NeighborNode,NeighborDistance in graph[NewNode]:
+            NewTotalDistance = NeighborDistance + NewDistance
+
+            if NewTotalDistance < dist_table[NeighborNode]:
+                dist_table[NeighborNode] = NewTotalDistance
+                PQ.put((NewTotalDistance,NeighborNode))
+
+    dist_table.pop(source)
+
+    return dist_table
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -89,7 +113,15 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+
+    SourceNodes = select_sources(spawn,relics,exit_node)
+    dist_table = {}
+
+    for Node in SourceNodes:
+        dist_table[Node] = run_dijkstra(graph,Node)
+
+    print(dist_table)
+    return dist_table
 
 
 # =============================================================================
@@ -274,4 +306,13 @@ def _run_tests():
 
 
 if __name__ == "__main__":
-    _run_tests()
+    graph_1 = {
+        'S': [('B', 1), ('C', 2), ('D', 2)],
+        'B': [('D', 1), ('T', 1)],
+        'C': [('B', 1), ('T', 1)],
+        'D': [('B', 1), ('C', 1)],
+        'T': []
+    }
+
+    precompute_distances(graph_1,'S',['B','C','D'],'T')
+    #_run_tests()

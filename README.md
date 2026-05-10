@@ -55,9 +55,9 @@
 > State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** Dijkstras is needed for how many relics rooms there are, plus the start node
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Cost per run:** Let n = |V|, m = |E|, k = |M|. Single shortest-path run costs O(m log n). Each run of Dijkstra's checks for shortest path to every other possible source node. So the cost for each run would go up to m, the number of edges, and log n to alter the priority queue, where n is the amount of nodes or the max possible size of the priority queue
+- **Total complexity:** k(m log n)
+- **Justification (one line):** The algorithm calls dijkstras k times, where k is the amount of source nodes in the graph
 
 ---
 
@@ -180,7 +180,6 @@ _Your answer here._
 ---
 
 ## References
-
-> Bullet list. If none beyond lecture notes, write that.
-
-- _Your references here._
+- CS 460 Lecture Notes
+- https://www.geeksforgeeks.org/dsa/dijkstras-shortest-path-algorithm-greedy-algo-7/  
+  Used to help with writing Dijkstra's Algorithm code
