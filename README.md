@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  A single shortest path run from S is not enough, because the torchbearer must be able to collect all relics during its path. It must find the shortest path to _all_ relics from every relic, which cannot always be considered by just a single shortest path from only the start.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  After knowing the fuel cost from the start to all relics, and one relic to another or the end, the remaining decision is to pick the shortest path that collects all relics and reaches the end.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  To make this decision, the algorithm would have to search through multiple different possible paths, as multiple shortest paths needed.
 
 ---
 
@@ -33,28 +33,28 @@
 
 > List the source node types as a bullet list. For each, one-line reason.
 
-| Source Node Type | Why it is a source |
-|---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| Source Node Type | Why it is a source                                                                                                                                                            
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Dungeon Start    | There must be a source node for the torchbearer to calculate the optimal path, the initial source node is wherever the torchbearer starts in the dungeon                      |
+| Relic Room       | As the torchbearer traverses the dungeon, it stops at relic rooms to collect a relic and then path to the next nearest relic, with the previous relic room as the source node |
 
 ### Part 2b: Distance Storage
 
 > Fill in the table. No prose required.
 
-| Property | Your answer |
-|---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Property                    | Your answer                                            |
+|-----------------------------|--------------------------------------------------------|
+| Data structure name         | HashMap/Dictionary                                     |
+| What the keys represent     | The keys represent a source node                       |
+| What the values represent   | Shortest distance to other nodes from that source node |
+| Lookup time complexity      | O(1)                                                   |
+| Why O(1) lookup is possible | Key lookup of a HashMap is O(1)                        |
 
 ### Part 2c: Precomputation Complexity
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
+- **Number of Dijkstra runs:** Dijkstras is needed for how many relics rooms there are, plus the start node
 - **Cost per run:** _your answer_
 - **Total complexity:** _your answer_
 - **Justification (one line):** _your answer_

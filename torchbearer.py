@@ -25,16 +25,10 @@ import heapq
 # =============================================================================
 
 def explain_problem():
-    """
-    Returns
-    -------
-    str
-        Your Part 1 README answers, written as a string.
-        Must match what you wrote in README Part 1.
 
-    TODO
-    """
-    return "TODO"
+    return ("Why a single shortest-path run from S is not enough: A single shortest path run from S is not enough, because the torchbearer must be able to collect all relics during its path. It must find the shortest path to all relics from every relic, which cannot always be considered by just a single shortest path from only the start."
+            "\nWhat decision remains after all inter-location costs are known: After knowing the fuel cost from the start to all relics, and one relic to another or the end, the remaining decision is to pick the shortest path that collects all relics and reaches the end."
+            "\nWhy this requires a search over orders (one sentence): To make this decision, the algorithm would have to search through multiple different possible paths, as multiple shortest paths needed.")
 
 
 # =============================================================================
