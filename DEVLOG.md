@@ -1,7 +1,7 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Michael Pham
+**Student ID:** 132006066
 
 > Instructions: Write at least four dated entries. Required entry types are marked below.
 > Two to five sentences per entry is sufficient. Write entries as you go, not all in one
@@ -10,12 +10,12 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – 5/10/2026: Initial Plan
 
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
+I expected implementing Dijkstra's and the precomputation would be difficult, but not overly difficult. The algorithm is well documented and there's plenty of information and videos about it online. I expect writing the main algorithm that uses Dijkstra's and the computed distances in order to solve the problem would be the hardest part. This part would bring together multiple functions and would be challenging. I expect to go about solving these problems step by step, and printing test results along the way.
 
 ---
 
@@ -48,13 +48,13 @@ _Your entry here._
 > Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
 
 | Part | Estimated Hours |
-|---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+|---|-----------------|
+| Part 1: Problem Analysis | 1 hour          |
+| Part 2: Precomputation Design | 2 hours         |
+| Part 3: Algorithm Correctness |                 |
+| Part 4: Search Design |                 |
+| Part 5: State and Search Space |                 |
+| Part 6: Pruning |                 |
+| Part 7: Implementation |                 |
+| README and DEVLOG writing |                 |
+| **Total** |                 |
