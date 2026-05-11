@@ -129,16 +129,12 @@ def precompute_distances(graph, spawn, relics, exit_node):
 # =============================================================================
 
 def dijkstra_invariant_check():
-    """
-    Returns
-    -------
-    str
-        Your Part 3 README answers, written as a string.
-        Must match what you wrote in README Part 3.
 
-    TODO
-    """
-    return "TODO"
+    return "For nodes already finalized (in S): For every node 'v' in S, dist[v] contains the shortest path length from the start node to node 'v'."
+"\nFor nodes not yet finalized (not in S): For every node 'u' not in S, dust[u] contains the shortest path length from the start node pathing through available nodes in S, to node 'u'."
+"\nInitialization : why the invariant holds before iteration 1: At iteration 0, S will be an empty list, as no shortest paths have been found yet. Nodes not in S, aka every other node will be set to infinity in dist[] asides from the source node which will be 0, so the invariant holds, as these are the shortest possible paths at iteration 0."
+"\nMaintenance : why finalizing the min-dist node is always correct: Finalizing the node that's first in the priority queue, or the min-dist node, is the best option because all edge weights are nonnegative, meaning any alternative path through another unfinished node would only increase the total path cost or not find a shorter route."
+"\nTermination : what the invariant guarantees when the algorithm ends: When the algorithm finishes, every reachable node has been finalized, so dist[v] contains the true shortest-path distance from the source to every reachable vertex in the graph."
 
 
 # =============================================================================
@@ -146,16 +142,11 @@ def dijkstra_invariant_check():
 # =============================================================================
 
 def explain_search():
-    """
-    Returns
-    -------
-    str
-        Your Part 4 README answers, written as a string.
-        Must match what you wrote in README Part 4.
-
-    TODO
-    """
-    return "TODO"
+    return "The failure mode: A purely greedy solution would only consider the cheapest path to the next possible relic at each stop. However this doesn't consider that each choice will lead to a different possible path, that might be more expensive later on if only the greedy choice is made each time."
+"\nCounter-example setup: Let S->B=1, S->C=5, B->C=100, B->T=2, C->B=1, and C->T=1"
+"\nWhat greedy picks: In this graph, greedy would pick ->B first. Then it is forced into picking B->C for 100, as the other option is the exit but all other relics must be picked first. From C, it goes to the exit T. So the total cost is 1+100+1 = 102. The flaw was that the greedy solution wants to pick B first because it's the cheapest, but that leads to a bad path later."
+"\nWhat optimal picks: Optimal would consider the bad options that picking B leads to, so it picks C first. From C, it picks B. From B, it moves to the exit T. The cost is 5+1+2 = 8."
+"\nWhy greedy loses: Greedy loses because it only considers the current cheapest edge and ignores how that choice affects the remaining route costs needed to collect all relics and reach the exit."
 
 
 # =============================================================================

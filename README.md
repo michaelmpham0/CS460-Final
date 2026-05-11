@@ -54,10 +54,10 @@
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** Dijkstras is needed for how many relics rooms there are, plus the start node
-- **Cost per run:** Let n = |V|, m = |E|, k = |M|. Single shortest-path run costs O(m log n). Each run of Dijkstra's checks for shortest path to every other possible source node. So the cost for each run would go up to m, the number of edges, and log n to alter the priority queue, where n is the amount of nodes or the max possible size of the priority queue
+- **Number of Dijkstra runs:** Dijkstras is needed for how many relics rooms there are, plus the start node.
+- **Cost per run:** Let n = |V|, m = |E|, k = |M|. Single shortest-path run costs O(m log n). Each run of Dijkstra's checks for shortest path to every other possible source node. So the cost for each run would go up to m, the number of edges, and log n to alter the priority queue, where n is the amount of nodes or the max possible size of the priority queue.
 - **Total complexity:** k(m log n)
-- **Justification (one line):** The algorithm calls dijkstras k times, where k is the amount of source nodes in the graph
+- **Justification (one line):** The algorithm calls dijkstras k times, where k is the amount of source nodes in the graph.
 
 ---
 
@@ -72,29 +72,28 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
-
+For every node 'v' in S, dist[v] contains the shortest path length from the start node to node 'v'.
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  For every node 'u' not in S, dust[u] contains the shortest path length from the start node pathing through available nodes in S, to node 'u'.
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+At iteration 0, S will be an empty list, as no shortest paths have been found yet. Nodes not in S, aka every other node will be set to infinity in dist[] asides from the source node which will be 0, so the invariant holds, as these are the shortest possible paths at iteration 0.
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+Finalizing the node that's first in the priority queue, or the min-dist node, is the best option because all edge weights are nonnegative, meaning any alternative path through another unfinished node would only increase the total path cost or not find a shorter route.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+When the algorithm finishes, every reachable node has been finalized, so dist[v] contains the true shortest-path distance from the source to every reachable vertex in the graph.
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+The Torchbearer's path depends on accurate shortest path distances, because incorrect distances could cause it to choose a nonoptimal relic order or fail to find the minimum fuel route to the exit.
 
 ---
 
@@ -105,17 +104,17 @@ _Your answer here._
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** A purely greedy solution would only consider the cheapest path to the next possible relic at each stop. However this doesn't consider that each choice will lead to a different possible path, that might be more expensive later on if only the greedy choice is made each time.
+- **Counter-example setup:** Let S->B=1, S->C=5, B->C=100, B->T=2, C->B=1, and C->T=1 
+- **What greedy picks:** In this graph, greedy would pick ->B first. Then it is forced into picking B->C for 100, as the other option is the exit but all other relics must be picked first. From C, it goes to the exit T. So the total cost is 1+100+1 = 102. The flaw was that the greedy solution wants to pick B first because it's the cheapest, but that leads to a bad path later.
+- **What optimal picks:** Optimal would consider the bad options that picking B leads to, so it picks C first. From C, it picks B. From B, it moves to the exit T. The cost is 5+1+2 = 8.
+- **Why greedy loses:** Greedy loses because it only considers the current cheapest edge and ignores how that choice affects the remaining route costs needed to collect all relics and reach the exit.
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+The algorithm has to explore all possible relic path orders, and then compare the options instead of trying to pick the greedy solution every time.
 
 ---
 
