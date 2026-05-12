@@ -125,30 +125,30 @@ The algorithm has to explore all possible relic path orders, and then compare th
 > Document the three components of your search state as a table.
 > Variable names here must match exactly what you use in torchbearer.py.
 
-| Component | Variable name in code | Data type | Description |
-|---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Component | Variable name in code | Data type | Description                                              |
+|---|-----------------------|-----------|----------------------------------------------------------|
+| Current location | CurrentLocation       | String    | Name of the node                                         |
+| Relics already collected | CollectedRelics       | Set       | Holds a set of node names                                |
+| Fuel cost so far | TotalSpentFuel        | Integer   | The amount of fuel the torchbearer has spent in its path |
 
 ### Part 5b: Data Structure for Visited Relics
 
 > Fill in the table.
 
-| Property | Your answer |
-|---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Property | Your answer                                                                          |
+|---|--------------------------------------------------------------------------------------|
+| Data structure chosen | Set                                                                                  |
+| Operation: check if relic already collected | Time complexity: O(1)                                                                |
+| Operation: mark a relic as collected | Time complexity:O(1)                                                                 |
+| Operation: unmark a relic (backtrack) | Time complexity:O(1)                                                                 |
+| Why this structure fits | A set allows for quick lookup and access which we'll need when we check relic status |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** k!, where k is the number of relics in the graph. 
+- **Why:** With k relics, theres k! possible paths and orders of collecting the relics. The algorithm might have to search every possible order before finding the minimum cost one.
 
 ---
 
@@ -158,23 +158,23 @@ The algorithm has to explore all possible relic path orders, and then compare th
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The best complete paths so far are tracked
+- **When it is used:** It's used everytime a new path is being calculated, and checks if a currently exploring path is already more expensive than the best completed one so far
+- **What it allows the algorithm to skip:** It allows the algorithm to end paths short that are worse than the current best path
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current path cost, and collected relics are known 
+- **What the lower bound accounts for:** In an unfinished path, the lower bound is the current cost so far. Since to finish the path, you would have to increase the path cost since there's no negative path costs.
+- **Why it never overestimates:** The pruning won't overestimate because the path costs are pre-calculated from Dijkstras, which finds the shortest path costs
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+Since the paths between rooms are non-negative, if an unfinished path is already more expensive than a finished one, there is no way for it to beat the currently found best one. The unfinished path must increase its cost to finish the route, which would only make it worse than the currently found best path.
 
 ---
 

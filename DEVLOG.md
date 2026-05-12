@@ -19,7 +19,7 @@ I expected implementing Dijkstra's and the precomputation would be difficult, bu
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – 5/12/2026: [Short description]
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
@@ -53,8 +53,8 @@ _Your entry here._
 | Part 2: Precomputation Design | 2 hours         |
 | Part 3: Algorithm Correctness | 45 minutes      |
 | Part 4: Search Design | 45 minutes      |
-| Part 5: State and Search Space |                 |
-| Part 6: Pruning |                 |
+| Part 5: State and Search Space | 1 hour          |
+| Part 6: Pruning | 1 hour          |
 | Part 7: Implementation |                 |
 | README and DEVLOG writing |                 |
 | **Total** |                 |
