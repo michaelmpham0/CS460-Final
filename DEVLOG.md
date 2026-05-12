@@ -19,16 +19,18 @@ I expected implementing Dijkstra's and the precomputation would be difficult, bu
 
 ---
 
-## Entry 2 – 5/12/2026: [Short description]
+## Entry 2 – 5/12/2026: Writing README
 
-> Required. At least one entry must describe a bug, wrong assumption, or design change
-> you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+
+I finished the README, and it was a good opportunity to think about the problems of implementing the code. I already wrote the code for computing the distances, but next I would have to implement the recursion and logic for actually finding the best route. Like the previous entry, I am expecting this to be the hardest part. The READMe also showed me that this problem will have pruning it. I was planning to solve the order search without pruning, which would have always had O(n!) time complexity to find the shortest order.
 
 ---
 
 ## Entry 3 – [Date]: [Short description]
+
+> Required. At least one entry must describe a bug, wrong assumption, or design change
+> you encountered. Describe what went wrong and how you resolved it.
 
 _Your entry here._
 
