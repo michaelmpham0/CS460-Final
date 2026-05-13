@@ -3,17 +3,9 @@
 **Student Name:** Michael Pham
 **Student ID:** 132006066
 
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
-
 ---
 
 ## Entry 1 – 5/10/2026: Initial Plan
-
-> Required. Write this before writing any code. Describe your plan: what you will
-> implement first, what parts you expect to be difficult, and how you plan to test.
 
 I expected implementing Dijkstra's and the precomputation would be difficult, but not overly difficult. The algorithm is well documented and there's plenty of information and videos about it online. I expect writing the main algorithm that uses Dijkstra's and the computed distances in order to solve the problem would be the hardest part. This part would bring together multiple functions and would be challenging. I expect to go about solving these problems step by step, and printing test results along the way.
 
@@ -27,36 +19,26 @@ I finished the README, and it was a good opportunity to think about the problems
 
 ---
 
-## Entry 3 – [Date]: [Short description]
 
-> Required. At least one entry must describe a bug, wrong assumption, or design change
-> you encountered. Describe what went wrong and how you resolved it.
+## Entry 3 – 5/13/2026: Post-Implementation Reflection
 
-_Your entry here._
+When implementing the _explore function, I encountered many bugs. A problem I had was my base case was not being reached properly. My best kept showing as infinity with no relics. This was because for my base case where I updated best, I set the final cost to best[0] + distance to end. But best[0] was intialized to infinity, and I should have used cost_so_far instead. There were many bugs like this where I used the wrong variable or some other minor mistake.
 
----
+I think to improve this I could probably change how the recursive function explores paths to the remaining relics. Right now it's unsorted, but I think it could be improved if there was a heuristic used instead of just looping through all neighbors.
 
-## Entry 4 – [Date]: Post-Implementation Reflection
-
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
-
-_Your entry here._
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Final Entry – 5/13/2026: Time Estimate
 
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
-
-| Part | Estimated Hours |
-|---|-----------------|
-| Part 1: Problem Analysis | 1 hour          |
-| Part 2: Precomputation Design | 2 hours         |
-| Part 3: Algorithm Correctness | 45 minutes      |
-| Part 4: Search Design | 45 minutes      |
-| Part 5: State and Search Space | 1 hour          |
-| Part 6: Pruning | 1 hour          |
-| Part 7: Implementation |                 |
-| README and DEVLOG writing |                 |
-| **Total** |                 |
+| Part | Estimated Hours                                                  |
+|---|------------------------------------------------------------------|
+| Part 1: Problem Analysis | 1 hour                                                           |
+| Part 2: Precomputation Design | 2 hours                                                          |
+| Part 3: Algorithm Correctness | 45 minutes                                                       |
+| Part 4: Search Design | 45 minutes                                                       |
+| Part 5: State and Search Space | 1 hour                                                           |
+| Part 6: Pruning | 1 hour                                                           |
+| Part 7: Implementation | 4 hours (I wrote parts of the code alongside writing the README) |
+| README and DEVLOG writing | 3 hours                                                          |
+| **Total** | 13 hours 30 minutes                                              |
